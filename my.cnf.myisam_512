@@ -1,0 +1,99 @@
+#
+# my.cnf.myisam_512
+#
+# This is a MySQL 5.x configuration file designed for the typical
+# content-based webapp, running on a 512MB server that is also
+# the app and httpd server. The below configuration dedicates
+# a bit more than half of the system resources to MySQL. It is 
+# MyISAM-only, and optimized for many SELECTs and INSERTs, 
+# but few UPDATEs and DELETEs. It does not support ACID or 
+# replication.
+#
+# By Evan Weaver
+# http://blog.evanweaver.com/articles/2007/04/30/top-secret-tuned-mysql-configurations-for-rails
+#
+# Copyright 2007, Cloudburst, LLC
+# Licensed under the Academic Free License v. 3.0
+# http://blog.evanweaver.com/files/mysql/LICENSE
+#
+
+[client]
+port	 = 3306
+socket = /var/run/mysqld/mysqld.sock
+max_allowed_packet = 32M
+
+[mysqld]
+######### engine and access interfaces
+skip-networking 
+skip-locking 
+skip-bdb
+
+skip-innodb 
+default-storage-engine = myisam
+
+port = 3306
+socket	= /var/run/mysqld/mysqld.sock
+
+######### character sets
+character_set_server = utf8
+collation_server = utf8_general_ci
+
+######### myisam
+key_buffer_size = 160M
+
+######### general
+connect_timeout = 10
+back_log = 50
+# you can't have more mongrels or fastcgi processes than the max_connections setting
+max_connections = 64
+max_connect_errors = 10
+table_cache = 2048
+max_allowed_packet = 32M
+
+open_files_limit = 1024
+# this is the in-memory tmp table max size
+max_heap_table_size = 32M
+# below are per-connection and per-sub-query
+join_buffer_size = 4M
+read_buffer_size = 4M
+sort_buffer_size = 4M
+read_rnd_buffer_size = 4M
+
+thread_cache_size = 8
+thread_concurrency = 8
+
+# query_cache_size is a global setting
+query_cache_size = 64M
+query_cache_limit = 2M
+thread_stack = 192K
+transaction_isolation = READ-COMMITTED
+# this is the on-disk max size
+tmp_table_size = 128M
+tmpdir = /tmp
+
+# You can log slow queries to the mysql log directory to help isolate performance problems
+#log_slow_queries
+#long_query_time = 5
+#log_long_format
+
+[mysqldump]
+quick
+max_allowed_packet = 16M
+
+[mysql]
+no-auto-rehash
+
+[myisamchk]
+# not used except when repairing the database at startup
+key_buffer = 128M
+sort_buffer_size = 128M
+read_buffer = 2M
+write_buffer = 2M
+
+[mysqlhotcopy]
+interactive-timeout
+
+[mysqld_safe]
+open-files-limit = 8192
+
+# PS. Do not under any circumstances enable binlog
