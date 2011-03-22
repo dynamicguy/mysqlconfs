@@ -5,7 +5,7 @@
 # content-based webapp, running on a 1GB server that is also
 # the app and httpd server. The below configuration dedicates
 # about half of the system resources to MySQL. It is MyISAM-
-# only, and optimized for many SELECTs and INSERTs, but few 
+# only, and optimized for many SELECTs and INSERTs, but few
 # UPDATEs and DELETEs. It does not support ACID or replication.
 #
 # By Evan Weaver
@@ -23,11 +23,11 @@ max_allowed_packet = 32M
 
 [mysqld]
 ######### engine and access interfaces
-skip-networking 
-skip-locking 
+skip-networking
+skip-locking
 skip-bdb
 
-skip-innodb 
+skip-innodb
 default-storage-engine = myisam
 
 port = 3306
@@ -91,20 +91,3 @@ write_buffer = 2M
 
 [mysqlhotcopy]
 interactive-timeout
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

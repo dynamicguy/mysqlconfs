@@ -2,11 +2,11 @@
 # my.cnf.innodb_1024
 #
 # This is a MySQL 5.x configuration file designed for the typical
-# webapp, running on a 1GB server that is also the app and 
-# httpd server. The below configuration dedicates about half of 
-# the system resources to MySQL. It is InnoDB-specific, and 
-# will not perform well with many MyISAM tables. It supports 
-# limited ACID and referential integrity. It does not support 
+# webapp, running on a 1GB server that is also the app and
+# httpd server. The below configuration dedicates about half of
+# the system resources to MySQL. It is InnoDB-specific, and
+# will not perform well with many MyISAM tables. It supports
+# limited ACID and referential integrity. It does not support
 # replication.
 #
 # By Evan Weaver
@@ -24,8 +24,8 @@ max_allowed_packet = 32M
 
 [mysqld]
 ######### engine and access interfaces
-skip-networking 
-skip-locking 
+skip-networking
+skip-locking
 skip-bdb
 
 port	= 3306
@@ -39,7 +39,7 @@ collation_server = utf8_general_ci
 ######### innodb options
 innodb_additional_mem_pool_size = 16M
 # buffer pool size is most critical for innodb's performance and memory usage
-innodb_buffer_pool_size = 256M    
+innodb_buffer_pool_size = 256M
 innodb_data_file_path = ibdata1:10M:autoextend
 innodb_data_home_dir = /var/lib/mysql
 innodb_file_io_threads = 4
@@ -52,7 +52,7 @@ innodb_log_buffer_size = 64M
 innodb_log_file_size = 80M
 innodb_log_files_in_group = 3
 # use a secondary volume if possible for a concurrent read/write speed boost
-innodb_log_group_home_dir = /var/lib/mysql 
+innodb_log_group_home_dir = /var/lib/mysql
 
 innodb_max_dirty_pages_pct = 90
 innodb_lock_wait_timeout = 120
@@ -116,10 +116,3 @@ interactive-timeout
 
 [mysqld_safe]
 open-files-limit = 8192
-
-
-
-
-
-
-
