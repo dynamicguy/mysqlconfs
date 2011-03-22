@@ -96,4 +96,24 @@ interactive-timeout
 [mysqld_safe]
 open-files-limit = 8192
 
-# PS. Do not under any circumstances enable binlog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

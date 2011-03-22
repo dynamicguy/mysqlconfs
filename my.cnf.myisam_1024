@@ -92,4 +92,19 @@ write_buffer = 2M
 [mysqlhotcopy]
 interactive-timeout
 
-# PS. Do not under any circumstances enable binlog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
